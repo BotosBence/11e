@@ -62,4 +62,20 @@ class konyvtar(konyv):
             del self.books[self.find_book(book_name)]
         print(self.books)
     def list_books(self):
-        
+        for i in range(len(self.books)):
+            for k in range(len(self.book_data[i][1])):
+                print(self.printdata[k]+str(self.books[i][1][k]+"\n"))
+            print(self.printdata[-1+ str(self.books[i][2]+"\n")])
+    def save_books(self):
+        ido=localtime()
+        name=""
+        name+="savebooks"+str(ido[1])+str(ido[2])+str(ido[3])+".txt"
+        fopen=open(name, 'w')
+
+        for i in range(len(self.books)):
+            for k in range(len(self.book_data[i][1])):
+                fopen.write(self.printdata[k]+str(self.books[i][1][k]+"\n"))
+            fopen.write(self.printdata[-1+ str(self.books[i][2]+"\n")])
+
+konyvtarpl= konyvtar()
+ans(input("Menü: q - kilépés, \nn - új könyv felvétele, \nf - könyv keresése, \nd - könyv törlése, \nkönyvek listázása, \ns - adatbázis mentése"))
